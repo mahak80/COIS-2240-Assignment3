@@ -1,14 +1,20 @@
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Transaction {
+
+    // List to store all transaction details
+    private static List<String> transactionHistory = new ArrayList<>();
 
     // Perform the borrowing of a book
     public static boolean borrowBook(Book book, Member member) {
         if (book.isAvailable()) {
             book.borrowBook();
-            member.borrowBook(book); 
+            member.borrowBook(book);
             String transactionDetails = getCurrentDateTime() + " - Borrowing: " + member.getName() + " borrowed " + book.getTitle();
+            transactionHistory.add(transactionDetails); // Save the transaction
             System.out.println(transactionDetails);
             return true;
         } else {
@@ -23,9 +29,22 @@ public class Transaction {
             member.returnBook(book);
             book.returnBook();
             String transactionDetails = getCurrentDateTime() + " - Returning: " + member.getName() + " returned " + book.getTitle();
+            transactionHistory.add(transactionDetails); // Save the transaction
             System.out.println(transactionDetails);
         } else {
             System.out.println("This book was not borrowed by the member.");
+        }
+    }
+
+    // Display the transaction history
+    public static void displayTransactionHistory() {
+        if (transactionHistory.isEmpty()) {
+            System.out.println("No transactions found.");
+        } else {
+            System.out.println("Transaction History:");
+            for (String transaction : transactionHistory) {
+                System.out.println(transaction);
+            }
         }
     }
 
