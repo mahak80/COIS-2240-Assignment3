@@ -25,14 +25,15 @@ public class LibraryManagement {
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine();// Consume newline
 
             switch (choice) {
                 case 1:
                     System.out.print("Enter member ID: ");
                     int id = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
                 	System.out.print("Enter member name: ");
-                    String name = scanner.next();
+                    String name = scanner.nextLine();
                     
                     scanner.nextLine();
 
@@ -43,10 +44,10 @@ public class LibraryManagement {
                 case 2:
                     System.out.print("Enter book ID: ");
                     id = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
                 	System.out.print("Enter book title: ");
-                    String title = scanner.next();
+                    String title = scanner.nextLine();
                     
-                    scanner.nextLine();
 
                     Book newBook = new Book(id, title);
                     library.addBook(newBook);
@@ -126,5 +127,6 @@ public class LibraryManagement {
                     System.out.println("Invalid choice! Please try again.");
             }
         }
+        scanner.close();
     }
 }
