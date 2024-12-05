@@ -53,4 +53,15 @@ public class Transaction {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(new Date());
     }
+    // Display the transaction history
+    public static void displayTranssactionHistory() {
+    	if (transactionHistory.isEmpty()) {
+    		System.out.println("No transactions found.");
+    	} else {
+    		System.out.println("Transaction History:");
+    		for (String transaction : transactionHistory) {
+                System.out.println(transaction);
+            }
+    	}
+    }
 }
