@@ -1,4 +1,7 @@
 import java.io.BufferedWriter;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -52,17 +55,25 @@ public class Transaction {
         }
     }
 
-    // Display the transaction history
+ // Display the transaction history from the file
     public void displayTransactionHistory() {
-        if (transactionHistory.isEmpty()) {
-            System.out.println("No transactions found.");
-        } else {
-            System.out.println("Transaction History:");
-            for (String transaction : transactionHistory) {
-                System.out.println(transaction);
+        File file = new File("transactions.txt");
+        if (!file.exists()) {
+            System.out.println("No transactions found. The transactions file does not exist.");
+            return;
+        }
+
+        System.out.println("=== Transaction History ===");
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
             }
+        } catch (IOException e) {
+            System.out.println("Error reading transaction history: " + e.getMessage());
         }
     }
+
  // Save a transaction to the file
     public void saveTransaction(String transactionDetails) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("transactions.txt", true))) {
