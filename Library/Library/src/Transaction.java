@@ -4,9 +4,20 @@ import java.util.Date;
 import java.util.List;
 
 public class Transaction {
+	 // Singleton instance
+    private static Transaction instance;
 
     // List to store all transaction details
     private static List<String> transactionHistory = new ArrayList<>();
+    // Private constructor to prevent instantiation
+    private Transaction() {}
+ // Public method to get the Singleton instance
+    public static Transaction getTransaction() {
+        if (instance == null) {
+            instance = new Transaction();
+        }
+        return instance;
+    }
 
     // Perform the borrowing of a book
     public static boolean borrowBook(Book book, Member member) {
@@ -37,7 +48,7 @@ public class Transaction {
     }
 
     // Display the transaction history
-    public static void displayTransactionHistory() {
+    public void displayTransactionHistory() {
         if (transactionHistory.isEmpty()) {
             System.out.println("No transactions found.");
         } else {
@@ -52,16 +63,5 @@ public class Transaction {
     private static String getCurrentDateTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(new Date());
-    }
-    // Display the transaction history
-    public static void displayTranssactionHistory() {
-    	if (transactionHistory.isEmpty()) {
-    		System.out.println("No transactions found.");
-    	} else {
-    		System.out.println("Transaction History:");
-    		for (String transaction : transactionHistory) {
-                System.out.println(transaction);
-            }
-    	}
     }
 }

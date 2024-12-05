@@ -26,6 +26,8 @@ public class LibraryManagement {
 
             int choice = scanner.nextInt();
             scanner.nextLine();// Consume newline
+         // Get the Singleton instance of Transaction
+            Transaction transaction = Transaction.getTransaction();
 
             switch (choice) {
                 case 1:
@@ -35,7 +37,6 @@ public class LibraryManagement {
                 	System.out.print("Enter member name: ");
                     String name = scanner.nextLine();
                     
-                    scanner.nextLine();
 
                     Member newMember = new Member(id, name);
                     library.addMember(newMember);
@@ -117,7 +118,7 @@ public class LibraryManagement {
                     }
                     break;
                 case 6:
-                	Transaction.displayTransactionHistory();
+                	Transaction.getTransaction().displayTransactionHistory();
                     break;
                 case 7:
                     System.out.println("Exiting. Good Bye..");
