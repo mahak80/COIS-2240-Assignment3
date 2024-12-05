@@ -1,3 +1,5 @@
+// This class represents a Book with attributes such as title, author, and ISBN.
+// It provides methods to access and modify these details.
 public class Book {
     private int id;
     private String title;
