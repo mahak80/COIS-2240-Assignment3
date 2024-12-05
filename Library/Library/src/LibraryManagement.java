@@ -32,27 +32,32 @@ public class LibraryManagement {
             switch (choice) {
                 case 1:
                     System.out.print("Enter member ID: ");
-                    int id = scanner.nextInt();
+                    int memberId = scanner.nextInt();
                     scanner.nextLine(); // Consume newline
                 	System.out.print("Enter member name: ");
-                    String name = scanner.nextLine();
+                    String memberName = scanner.nextLine();
                     
 
-                    Member newMember = new Member(id, name);
-                    library.addMember(newMember);
-                    System.out.println("Member added successfully.");
+                    Member newMember = new Member(memberId, memberName);
+                    if (library.addMember(newMember)) {
+                        System.out.println("Member added successfully.");
+                    } else {
+                        System.out.println("Failed to add member. Duplicate ID.");
+                    }
                     break;
-                case 2:
+                case 2: // Add Book
                     System.out.print("Enter book ID: ");
-                    id = scanner.nextInt();
+                    int bookId = scanner.nextInt();
                     scanner.nextLine(); // Consume newline
-                	System.out.print("Enter book title: ");
-                    String title = scanner.nextLine();
-                    
+                    System.out.print("Enter book title: ");
+                    String bookTitle = scanner.nextLine();
 
-                    Book newBook = new Book(id, title);
-                    library.addBook(newBook);
-                    System.out.println("Book added to library successfully.");
+                    Book newBook = new Book(bookId, bookTitle);
+                    if (library.addBook(newBook)) {
+                        System.out.println("Book added successfully.");
+                    } else {
+                        System.out.println("Failed to add book. Duplicate ID.");
+                    }
                     break;
                 case 3:
                 	System.out.println("\n--- Available Members ---");
@@ -61,7 +66,7 @@ public class LibraryManagement {
                     }
                     
                     System.out.print("Enter member ID: ");
-                    int memberId = scanner.nextInt();
+                    memberId = scanner.nextInt();
                     
                     System.out.println("\n--- Available Books ---");
                     for (Book book : library.getBooks()) {
@@ -70,7 +75,7 @@ public class LibraryManagement {
                     }
                     
                     System.out.print("Enter book ID: ");
-                    int bookId = scanner.nextInt();
+                    bookId = scanner.nextInt();
                     
                     scanner.nextLine();
 

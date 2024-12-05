@@ -73,7 +73,6 @@ public class Transaction {
             System.out.println("Error reading transaction history: " + e.getMessage());
         }
     }
-
  // Save a transaction to the file
     public void saveTransaction(String transactionDetails) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("transactions.txt", true))) {
