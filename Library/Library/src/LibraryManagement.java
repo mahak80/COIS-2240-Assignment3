@@ -52,11 +52,15 @@ public class LibraryManagement {
                     System.out.print("Enter book title: ");
                     String bookTitle = scanner.nextLine();
 
-                    Book newBook = new Book(bookId, bookTitle);
-                    if (library.addBook(newBook)) {
-                        System.out.println("Book added successfully.");
-                    } else {
-                        System.out.println("Failed to add book. Duplicate ID.");
+                    try {
+                        Book newBook = new Book(bookId, bookTitle);
+                        if (library.addBook(newBook)) {
+                            System.out.println("Book added successfully.");
+                        } else {
+                            System.out.println("Failed to add book. Duplicate ID.");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Error: " + e.getMessage());
                     }
                     break;
                 case 3:

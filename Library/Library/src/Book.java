@@ -5,10 +5,17 @@ public class Book {
     private String title;
     private boolean available;
 
-    public Book(int id, String title) {
+    public Book(int id, String title) throws Exception {
+    	if (!isValidId(id)) {
+            throw new Exception("Invalid book ID. Book ID must be between 100 and 999.");
+        }
         this.id = id;
         this.title = title;
         this.available = true;
+    }
+    // Check if the book ID is valid
+    public boolean isValidId(int id) {
+        return id >= 100 && id <= 999;
     }
 
     // Getter methods
@@ -34,10 +41,5 @@ public class Book {
     // Method to return the book
     public void returnBook() {
         available = true;
-    }
-
-    // Method to check if a book id is valid
-    public boolean isValidId(int id) {
-        return id >= 100 && id <= 999;
     }
 }
