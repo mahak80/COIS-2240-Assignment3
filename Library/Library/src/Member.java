@@ -1,3 +1,6 @@
+// This class represents a Library Member with details such as name, ID, and membership type.
+// It provides methods to manage borrowing limits and track books borrowed by the member.
+// Additional methods ensure membership functionality and details are accurately handled.
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +15,7 @@ public class Member {
         this.borrowedBooks = new ArrayList<>();
     }
 
-    // Getter methods
+    
     public int getId() {
         return id;
     }
